@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #e0f7fa;
+  color: #0f172a;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #0284c7, #22c55e);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: white;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-card h1 {
+  color: #0284c7;
+  margin-bottom: 8px;
+}
+
+.login-card p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #0284c7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0369a1;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.page {
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.logout-btn {
+  background: #ef4444;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card,
+.challenge-card,
+.ranking-card,
+.current-user {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #0f172a;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.12);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #0284c7;
+}
+
+.list {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.challenge-card,
+.ranking-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.current-user {
+  margin-top: 20px;
+  border-left: 6px solid #22c55e;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #0284c7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-card,
+  .ranking-card,
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
