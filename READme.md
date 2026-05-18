@@ -1,156 +1,182 @@
-# 💧 AquaMind
+💧 AquaMind
 
-Sistema web desenvolvido para incentivar a economia de água através de desafios sustentáveis, pontuação e ranking entre usuários.
+Sistema inteligente de conscientização e monitoramento de consumo de água.
 
----
 
-# 📸 Visão Geral
 
-O AquaMind permite que usuários:
 
-- Criem contas
-- Realizem login seguro
-- Completem desafios ecológicos
-- Acumulem pontos
-- Participem de um ranking global
-- Acompanhem seu progresso
+📖 Sobre o Projeto
 
----
+O AquaMind é uma plataforma moderna focada em:
 
-# 🚀 Tecnologias Utilizadas
+conscientização ambiental
+monitoramento de consumo
+gamificação
+economia de água
+desafios interativos
+ranking competitivo
+dashboards inteligentes
 
-## Frontend
+O sistema foi desenvolvido com foco em:
 
-- React
-- Vite
-- React Router DOM
-- CSS3
-
-## Backend
-
-- Node.js
-- Express
-- JWT (JSON Web Token)
-- bcryptjs
-- Firebase Firestore
-- Firebase Admin SDK
-
----
-
-# 📂 Estrutura do Projeto
-
-```bash
-Aquamind/
-├── backend/
-│   ├── middleware/
-│   ├── routes/
-│   ├── firebase.js
-│   ├── server.js
-│   ├── .env
-│   └── serviceAccountKey.json
+experiência moderna
+visual premium
+performance
+responsividade
+animações suaves
+arquitetura escalável
+✨ Funcionalidades
+🔐 Sistema de Login
+Firebase Authentication
+Persistência de sessão
+Rotas privadas
+Controle de autenticação
+📊 Dashboard Inteligente
+Consumo diário
+Estatísticas gerais
+Economia de água
+Sistema de pontos
+Gráficos interativos
+Indicadores visuais
+Layout responsivo
+🏆 Ranking Global
+Top 3 usuários
+Classificação completa
+Posição individual
+Medalhas
+Sistema de pontuação
+Layout premium
+🎯 Sistema de Desafios
+Desafios diários
+Progresso individual
+Metas de economia
+Gamificação
+Pontuação automática
+🎨 Interface Moderna
+Glassmorphism
+Responsividade
+TailwindCSS
+Framer Motion
+UX moderna
+Visual SaaS
+🛠️ Tecnologias
+Frontend
+React
+Vite
+TailwindCSS
+Framer Motion
+Recharts
+React Router DOM
+Lucide React
+Backend/Serviços
+Firebase Authentication
+Firebase Admin SDK
+📂 Estrutura do Projeto
+AquaMind/
 │
-└── frontend/
-    ├── src/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── App.jsx
-    │   └── main.jsx
-    └── package.json
-🔐 Funcionalidades
-👤 Autenticação
-Cadastro de usuários
-Login seguro
-Senhas criptografadas com bcrypt
-Autenticação via JWT
-🏆 Ranking
-
-O sistema calcula automaticamente a pontuação dos usuários com base nos desafios concluídos.
-
-Medalhas:
-🥇 1º Lugar
-🥈 2º Lugar
-🥉 3º Lugar
-🌱 Desafios
-
-O sistema possui desafios sustentáveis com diferentes pontuações.
-
-Desafio	Pontos
-Tomar banho em menos de 5 minutos	50
-Fechar a torneira ao escovar os dentes	30
-Reutilizar água da chuva	80
-Não usar mangueira para limpar calçadas	90
-Lavar roupa com máquina cheia	60
-Consertar vazamentos	70
-Usar balde para lavar o carro	40
-Economizar água ao lavar louça	50
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── firebase/
+│   └── services/
+│
+└── README.md
+🚀 Como Executar
+1. Clone o projeto
+git clone https://github.com/Tiago-MdrS/AquaMind.git
+2. Entre na pasta
+cd AquaMind
+3. Instale as dependências
+npm install
+4. Rode o frontend
+cd frontend
+npm run dev
 🔥 Firebase
 
-O banco de dados utilizado é o Firebase Firestore.
+Crie um arquivo:
 
-Configuração
-1. Criar projeto Firebase
+backend/.env
 
-Acesse:
+Adicione:
 
-https://console.firebase.google.com/
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+🔒 Segurança
 
-2. Ativar Firestore Database
-Criar banco de dados
-Escolher modo de teste
-Selecionar região
-3. Gerar chave privada
-Configurações do projeto
-Contas de serviço
-Gerar nova chave privada
-
-Coloque o arquivo baixado em:
+Arquivos protegidos pelo .gitignore:
 
 backend/serviceAccountKey.json
-⚙️ Variáveis de Ambiente
+backend/.env
+.env
+📱 Responsividade
 
-Crie um arquivo .env dentro de backend/.
+O AquaMind funciona em:
 
-PORT=3333
-JWT_SECRET=aquamind_secret
-▶️ Executando o Projeto
+Desktop
+Notebook
+Tablet
+Mobile
+📈 Melhorias Futuras
+Sistema de conquistas
+Ranking em tempo real
+IA para recomendações
+Desafios semanais
+Notificações
+Perfil do usuário
+Histórico completo
+👨‍💻 Desenvolvedor
+Tiago Madeira
 
-Backend
-cd backend
-npm install
-npm run dev
+Desenvolvedor Full Stack focado em:
 
-Servidor:
+React
+Node.js
+Firebase
+Electron
+Sistemas modernos
+UX/UI
 
-http://localhost:3333
+GitHub:
 
-Frontend
-cd frontend
-npm install
-npm run dev
+👉 https://github.com/Tiago-MdrS
 
-Aplicação:
+⭐ Status do Projeto
 
-http://localhost:5173
+✅ Em desenvolvimento ativo
 
-🔑 Rotas da API
-Auth
-Método	Rota	Descrição
-POST	/api/auth/register	Cadastro
-POST	/api/auth/login	Login
-Challenges
-Método	Rota	Descrição
-GET	/api/challenges	Listar desafios
-POST	/api/challenges/:id/complete	Concluir desafio
-Ranking
-Método	Rota	Descrição
-GET	/api/ranking	Ranking global
+✅ Frontend funcional
 
-🛡️ Segurança
-JWT Authentication
-Senhas criptografadas
-Middleware de autenticação
-Rotas privadas
+✅ Dashboard implementado
 
-🎯 Objetivo do Projeto
+✅ Ranking implementado
 
-Promover conscientização ambiental e incentivar hábitos sustentáveis através da gamificação.
+✅ Firebase integrado
+
+✅ Interface moderna finalizada
+
+Criei um README profissional completo para o AquaMind com:
+
+badges
+descrição do projeto
+funcionalidades
+tecnologias
+estrutura de pastas
+instruções de instalação
+Firebase
+segurança
+melhorias futuras
+seção do desenvolvedor
+visual padrão GitHub profissional

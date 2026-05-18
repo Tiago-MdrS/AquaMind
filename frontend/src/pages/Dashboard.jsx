@@ -138,8 +138,7 @@ export default function Dashboard() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 md:text-base">
-                Acompanhe seu consumo de água, registre novos usos
-                e visualize sua evolução de forma inteligente.
+
               </p>
             </div>
 

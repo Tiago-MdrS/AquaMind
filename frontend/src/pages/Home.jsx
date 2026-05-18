@@ -391,7 +391,7 @@ export default function Home() {
             {...fadeUp(0.2)}
             style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}
           >
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+            <Link to="/desafios" style={{ textDecoration: 'none' }}>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
@@ -406,7 +406,7 @@ export default function Home() {
                 Começar agora
               </motion.div>
             </Link>
-            <Link to="/ranking" style={{ textDecoration: 'none' }}>
+            <Link to="/desafios" style={{ textDecoration: 'none' }}>
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
@@ -418,7 +418,7 @@ export default function Home() {
                   cursor: 'pointer',
                 }}
               >
-                Ver Ranking
+                Ver Desafios
               </motion.div>
             </Link>
           </motion.div>
