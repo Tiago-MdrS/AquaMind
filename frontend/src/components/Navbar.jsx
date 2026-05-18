@@ -48,9 +48,16 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50 }}
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          zIndex: 9999, // ALTURA MÁXIMA PARA NÃO SUMIR ATRÁS DE ELEMENTOS
+          height: '64px' // ALTURA FIXA ALINHADA COM O SEU LAYOUT GLOBAL
+        }}
       >
-        {/* linha de brilho */}
+        {/* Linha de brilho superior */}
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
           background: 'linear-gradient(90deg, transparent, #38bdf8 40%, #22d3ee 60%, transparent)',
@@ -254,13 +261,19 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
             style={{
-              position: 'fixed', top: '64px', left: 0, right: 0, zIndex: 40,
+              position: 'fixed', 
+              top: '64px', 
+              left: 0, 
+              right: 0, 
+              zIndex: 9998, // ABAIXO APENAS DA NAVBAR FIXA
               background: 'rgba(7,19,31,0.98)',
               backdropFilter: 'blur(24px)',
               borderBottom: '1px solid rgba(56,189,248,0.1)',
               boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
               padding: '20px 24px 28px',
-              display: 'flex', flexDirection: 'column', gap: '4px',
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '4px',
             }}
           >
             {links.map(({ to, label }, i) => (
@@ -327,7 +340,7 @@ export default function Navbar() {
                 Sair
               </button>
             </div>
-          </motion.div>
+          </motion.div> 
         )}
       </AnimatePresence>
     </>

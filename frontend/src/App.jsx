@@ -1,27 +1,42 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Desafios from "./pages/Desafios";
 import Ranking from "./pages/Ranking";
-import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Navbar";
 
-// 1. Importe o Provider (ajuste o caminho da pasta se necessário)
-import { WaterProvider } from "./context/WaterContext"; 
+import { WaterProvider } from "./context/WaterContext";
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
-
   return token ? children : <Navigate to="/" replace />;
 }
 
-export default function App() {
+function CenteredPage({ children }) {
   return (
-    <BrowserRouter>
-      <WaterProvider>
-        <Navbar />
+    <div className="flex w-full justify-center">
+      <div className="w-full max-w-7xl px-4">{children}</div>
+    </div>
+  );
+}
 
+function AppLayout() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/";
+
+  return (
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#061622] text-white">
+      {!isLoginPage && <Navbar />}
+
+      <main className={!isLoginPage ? "min-h-screen w-full pt-24 pb-10" : "min-h-screen w-full"}>
         <Routes>
           <Route path="/" element={<Login />} />
 
@@ -30,15 +45,6 @@ export default function App() {
             element={
               <PrivateRoute>
                 <Home />
-              </PrivateRoute>
-            }
-          />
-          
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
               </PrivateRoute>
             }
           />
@@ -53,16 +59,39 @@ export default function App() {
           />
 
           <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <CenteredPage>
+                  <Dashboard />
+                </CenteredPage>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
             path="/ranking"
             element={
               <PrivateRoute>
-                <Ranking />
+                <CenteredPage>
+                  <Ranking />
+                </CenteredPage>
               </PrivateRoute>
             }
           />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+      </main>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <WaterProvider>
+        <AppLayout />
       </WaterProvider>
     </BrowserRouter>
   );

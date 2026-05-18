@@ -341,61 +341,6 @@ export default function Home() {
       {/* divisor */}
       <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(56,189,248,0.15) 30%, rgba(34,211,238,0.15) 70%, transparent)' }} />
 
-      {/* ══════════════════════════════
-          STEPS
-      ══════════════════════════════ */}
-      <section style={{
-        padding: '100px 24px',
-        background: 'linear-gradient(135deg, #0d3d52 0%, #051d28 100%)',
-      }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-
-          <motion.h2
-            {...fadeUp(0)}
-            style={{
-              textAlign: 'center', fontWeight: 900,
-              fontSize: 'clamp(2rem, 5vw, 3.2rem)',
-              letterSpacing: '-0.02em', marginBottom: '64px',
-            }}
-          >
-            Como começar em{' '}
-            <span style={{
-              background: 'linear-gradient(90deg, #38bdf8, #22d3ee)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>
-              3 passos
-            </span>
-          </motion.h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '32px' }}>
-            {steps.map((step, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.12)} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{
-                  fontSize: '2.8rem', fontWeight: 900,
-                  background: 'linear-gradient(90deg, #38bdf8, #22d3ee)',
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  opacity: 0.35,
-                }}>
-                  {step.num}
-                </div>
-                <h3 style={{ fontWeight: 800, fontSize: '1.15rem', color: 'white' }}>
-                  {step.title}
-                </h3>
-                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7 }}>
-                  {step.text}
-                </p>
-                <div style={{
-                  height: '1px', width: '100%',
-                  background: 'linear-gradient(90deg, rgba(56,189,248,0.3), transparent)',
-                }} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* divisor */}
-      <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(56,189,248,0.15) 30%, rgba(34,211,238,0.15) 70%, transparent)' }} />
 
       {/* ══════════════════════════════
           CTA FINAL
