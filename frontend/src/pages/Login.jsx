@@ -29,10 +29,13 @@ export default function Login() {
 
       if (isRegister) {
         await register(name, email, password);
-        alert("Conta criada com sucesso! Agora faça login.");
+
+        alert("Conta criada com sucesso!");
+
         setIsRegister(false);
         setName("");
         setPassword("");
+
         return;
       }
 
@@ -41,7 +44,11 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      navigate("/dashboard");
+      // Alteração aplicada aqui:
+      navigate("/home", {
+        replace: true,
+      });
+      
     } catch (error) {
       alert(error.message);
     } finally {
@@ -51,11 +58,38 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <form className="login-card" onSubmit={handleSubmit}>
-        <h1>AquaMind</h1>
-        <p>Economize água, complete desafios e suba no ranking.</p>
 
+      {/* BOLHAS */}
+      <div className="bubbles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* CARD */}
+      <form className="login-card" onSubmit={handleSubmit}>
+
+        <div className="logo-area">
+          <div className="logo-circle">
+            💧
+          </div>
+
+          <h1>AquaMind</h1>
+
+          <p>
+            Economize água, complete desafios
+            e suba no ranking sustentável.
+          </p>
+        </div>
+
+        {/* TABS */}
         <div className="auth-tabs">
+
           <button
             type="button"
             className={!isRegister ? "active" : ""}
@@ -71,8 +105,10 @@ export default function Login() {
           >
             Cadastrar
           </button>
+
         </div>
 
+        {/* INPUT NOME */}
         {isRegister && (
           <input
             type="text"
@@ -82,6 +118,7 @@ export default function Login() {
           />
         )}
 
+        {/* INPUT EMAIL */}
         <input
           type="email"
           placeholder="E-mail"
@@ -89,6 +126,7 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
+        {/* INPUT SENHA */}
         <input
           type="password"
           placeholder="Senha"
@@ -96,13 +134,19 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit" disabled={loading}>
+        {/* BOTÃO */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="submit-btn"
+        >
           {loading
             ? "Carregando..."
             : isRegister
             ? "Criar conta"
             : "Entrar"}
         </button>
+
       </form>
     </div>
   );

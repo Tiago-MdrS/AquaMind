@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
@@ -8,23 +9,33 @@ const rankingRoutes = require("./routes/ranking");
 
 const app = express();
 
-app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
-  credentials: true
-}));
+/* CORS */
+app.use(cors());
 
+/* JSON */
 app.use(express.json());
 
+/* ROTAS */
 app.use("/api/auth", authRoutes);
 app.use("/api/challenges", challengeRoutes);
 app.use("/api/ranking", rankingRoutes);
 
+/* TESTE */
 app.get("/", (req, res) => {
-  res.json({ message: "Backend AquaMind rodando" });
+  res.json({
+    message: "Backend AquaMind rodando",
+  });
 });
 
+/* PORTA */
 const PORT = process.env.PORT || 3333;
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+/* LOCAL */
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+  });
+}
+
+/* VERCEL */
+module.exports = app;

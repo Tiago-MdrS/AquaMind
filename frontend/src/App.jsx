@@ -1,27 +1,30 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import Desafios from "./pages/Desafios";
 import Ranking from "./pages/Ranking";
+import Navbar from "./components/Navbar";
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
 
-  return token ? children : <Navigate to="/" />;
+  return token ? children : <Navigate to="/" replace />;
 }
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<Login />} />
 
         <Route
-          path="/dashboard"
+          path="/home"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <Home />
             </PrivateRoute>
           }
         />
@@ -43,6 +46,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
