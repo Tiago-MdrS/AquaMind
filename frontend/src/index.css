@@ -6,6 +6,15 @@
   --accent: #22d3ee;
 }
 
+@theme {
+  --color-deep: #07131f;
+  --color-sky: #38bdf8;
+  --color-accent: #22d3ee;
+}
+.text-align-last-center {
+  text-align-last: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +38,9 @@ body {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  position: relative;
+  overflow: hidden;
+
   background:
     radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 40%),
     radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.15), transparent 40%),
@@ -40,60 +52,140 @@ body {
   max-width: 420px;
   padding: 36px;
   border-radius: 28px;
+
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(20px);
+
   border: 1px solid rgba(255,255,255,0.08);
+
   box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+/* LOGO */
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+}
+
+.logo-circle {
+  width: 74px;
+  height: 74px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 999px;
+
+  font-size: 38px;
+
+  background: rgba(56, 189, 248, 0.12);
+
+  border: 1px solid rgba(56, 189, 248, 0.2);
+
+  box-shadow:
+    0 0 30px rgba(56,189,248,0.12),
+    inset 0 0 20px rgba(56,189,248,0.08);
 }
 
 .login-card h1 {
   font-size: 42px;
   font-weight: 900;
-  margin-bottom: 8px;
+
+  margin-bottom: 10px;
+
+  background: linear-gradient(to right, #38bdf8, #22d3ee);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.login-card p {
+.login-page .login-card p {
   color: rgba(255,255,255,0.55);
-  line-height: 1.6;
+
+  line-height: 1.7;
+
   margin-bottom: 28px;
+
+  text-align: justify;
+  text-align-last: center;
 }
 
-/* Tabs */
+/* =========================
+   TABS
+========================= */
 
 .auth-tabs {
   display: flex;
   gap: 10px;
+
   margin-bottom: 24px;
+
+  justify-content: center;
 }
 
 .auth-tabs button {
   flex: 1;
+
   border: 1px solid rgba(255,255,255,0.08);
+
   background: rgba(255,255,255,0.03);
+
   color: rgba(255,255,255,0.65);
+
   padding: 12px;
+
   border-radius: 12px;
+
   cursor: pointer;
+
   transition: 0.3s;
+
   font-weight: 600;
 }
 
 .auth-tabs button.active {
   background: linear-gradient(to right, #38bdf8, #22d3ee);
+
   color: #07131f;
 }
 
-/* Inputs */
+/* =========================
+   INPUTS
+========================= */
 
 .login-card input {
   width: 100%;
+
   padding: 14px 16px;
+
   margin-bottom: 14px;
+
   border-radius: 14px;
+
   border: 1px solid rgba(255,255,255,0.08);
+
   background: rgba(255,255,255,0.03);
+
   color: white;
+
   font-size: 15px;
+
+  text-align: center;
+
+  transition: 0.3s;
 }
 
 .login-card input::placeholder {
@@ -101,27 +193,52 @@ body {
 }
 
 .login-card input:focus {
+  outline: none;
+
   border-color: #22d3ee;
+
+  box-shadow: 0 0 0 3px rgba(34,211,238,0.08);
 }
 
-/* Botão */
+/* =========================
+   BOTÃO
+========================= */
 
+.submit-btn,
 .login-card button[type="submit"] {
   width: 100%;
+
   padding: 14px;
+
   border: none;
+
   border-radius: 14px;
+
   background: linear-gradient(to right, #38bdf8, #22d3ee);
+
   color: #07131f;
+
   font-weight: 800;
+
   cursor: pointer;
+
   transition: 0.3s;
+
   margin-top: 8px;
+
+  text-align: center;
 }
 
+.submit-btn:hover,
 .login-card button[type="submit"]:hover {
   transform: translateY(-2px);
+
   opacity: 0.95;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* =========================
@@ -142,17 +259,22 @@ body {
 
 .glass {
   background: rgba(255, 255, 255, 0.04);
+
   backdrop-filter: blur(20px);
+
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .text-gradient {
   background: linear-gradient(to right, #38bdf8, #22d3ee);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Scroll */
+/* =========================
+   SCROLL
+========================= */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -160,6 +282,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.15);
+
   border-radius: 999px;
 }
 
@@ -167,41 +290,45 @@ body {
   background: transparent;
 }
 
-
-.login-page {
-  position: relative;
-  overflow: hidden;
-}
+/* =========================
+   BOLHAS GRANDES
+========================= */
 
 .login-page::before,
 .login-page::after {
   content: "";
+
   position: absolute;
+
   bottom: -120px;
+
   width: 260px;
   height: 260px;
+
   border-radius: 50%;
+
   background: rgba(56, 189, 248, 0.12);
+
   filter: blur(2px);
+
   animation: bubblesUp 9s infinite ease-in;
 }
 
 .login-page::before {
   left: 12%;
+
   animation-delay: 0s;
 }
 
 .login-page::after {
   right: 14%;
+
   width: 180px;
   height: 180px;
-  background: rgba(34, 211, 238, 0.1);
-  animation-delay: 3s;
-}
 
-.login-card {
-  position: relative;
-  z-index: 2;
+  background: rgba(34, 211, 238, 0.1);
+
+  animation-delay: 3s;
 }
 
 @keyframes bubblesUp {
@@ -219,23 +346,30 @@ body {
     opacity: 0;
   }
 }
-.login-page {
-  position: relative;
-  overflow: hidden;
-}
+
+/* =========================
+   BOLHAS PEQUENAS
+========================= */
 
 .bubbles {
   position: absolute;
+
   inset: 0;
+
   overflow: hidden;
+
   pointer-events: none;
 }
 
 .bubbles span {
   position: absolute;
+
   bottom: -120px;
+
   border-radius: 999px;
+
   border: 1px solid rgba(56, 189, 248, 0.2);
+
   background:
     radial-gradient(
       circle at 30% 30%,
@@ -246,7 +380,7 @@ body {
   animation: rise linear infinite;
 }
 
-/* TAMANHOS E POSIÇÕES */
+/* POSIÇÕES */
 
 .bubbles span:nth-child(1) {
   left: 8%;
@@ -316,6 +450,7 @@ body {
 @keyframes rise {
   0% {
     transform: translateY(0) scale(1);
+
     opacity: 0;
   }
 
@@ -329,6 +464,77 @@ body {
 
   100% {
     transform: translateY(-120vh) scale(1.15);
+
     opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 28px;
+  }
+
+  .login-card h1 {
+    font-size: 34px;
+  }
+
+  .logo-circle {
+    width: 66px;
+    height: 66px;
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 16px;
+    align-items: center;
+  }
+
+  .login-card {
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+
+  .login-card h1 {
+    font-size: 32px;
+  }
+
+  .login-page .login-card p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .logo-circle {
+    width: 62px;
+    height: 62px;
+    font-size: 30px;
+  }
+
+  .auth-tabs {
+    gap: 8px;
+  }
+
+  .auth-tabs button {
+    padding: 11px 8px;
+    font-size: 14px;
+  }
+
+  .login-card input {
+    padding: 13px 12px;
+    font-size: 14px;
+  }
+
+  .submit-btn,
+  .login-card button[type="submit"] {
+    padding: 13px;
+    font-size: 14px;
+  }
+
+  .bubbles span:nth-child(7),
+  .bubbles span:nth-child(8) {
+    display: none;
   }
 }

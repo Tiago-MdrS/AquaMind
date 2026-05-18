@@ -5,6 +5,10 @@ import Home from "./pages/Home";
 import Desafios from "./pages/Desafios";
 import Ranking from "./pages/Ranking";
 import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
+
+// 1. Importe o Provider (ajuste o caminho da pasta se necessário)
+import { WaterProvider } from "./context/WaterContext"; 
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -15,40 +19,51 @@ function PrivateRoute({ children }) {
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <WaterProvider>
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Login />} />
+        <Routes>
+          <Route path="/" element={<Login />} />
 
-        <Route
-          path="/home"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/desafios"
-          element={
-            <PrivateRoute>
-              <Desafios />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path="/desafios"
+            element={
+              <PrivateRoute>
+                <Desafios />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/ranking"
-          element={
-            <PrivateRoute>
-              <Ranking />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path="/ranking"
+            element={
+              <PrivateRoute>
+                <Ranking />
+              </PrivateRoute>
+            }
+          />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </WaterProvider>
     </BrowserRouter>
   );
 }
