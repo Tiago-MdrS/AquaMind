@@ -10,11 +10,15 @@ router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        error: "Nome, e-mail e senha são obrigatórios",
+      });
+    }
+
     const userRef = db.collection("users");
 
-    const existingUser = await userRef
-      .where("email", "==", email)
-      .get();
+    const existingUser = await userRef.where("email", "==", email).get();
 
     if (!existingUser.empty) {
       return res.status(400).json({
@@ -32,13 +36,16 @@ router.post("/register", async (req, res) => {
       createdAt: new Date(),
     });
 
-    res.status(201).json({
-      message: "Usuário criado",
+    return res.status(201).json({
+      message: "Usuário criado com sucesso",
       id: newUser.id,
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("ERRO NO REGISTER:", error);
+
+    return res.status(500).json({
       error: "Erro ao cadastrar usuário",
+      details: error.message,
     });
   }
 });
@@ -46,6 +53,12 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        error: "E-mail e senha são obrigatórios",
+      });
+    }
 
     const snapshot = await db
       .collection("users")
@@ -59,13 +72,9 @@ router.post("/login", async (req, res) => {
     }
 
     const doc = snapshot.docs[0];
-
     const user = doc.data();
 
-    const passwordIsValid = await bcrypt.compare(
-      password,
-      user.password
-    );
+    const passwordIsValid = await bcrypt.compare(password, user.password);
 
     if (!passwordIsValid) {
       return res.status(401).json({
@@ -85,7 +94,7 @@ router.post("/login", async (req, res) => {
       }
     );
 
-    res.json({
+    return res.json({
       token,
       user: {
         id: doc.id,
@@ -93,9 +102,12 @@ router.post("/login", async (req, res) => {
         email: user.email,
       },
     });
-  } catch {
-    res.status(500).json({
+  } catch (error) {
+    console.error("ERRO NO LOGIN:", error);
+
+    return res.status(500).json({
       error: "Erro ao fazer login",
+      details: error.message,
     });
   }
 });
